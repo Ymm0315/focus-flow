@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, '.SF Pro Text', '.SF Pro Display',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Draggable title bar region */
+.drag-region {
+  -webkit-app-region: drag;
+}
+.drag-region button,
+.drag-region input,
+.drag-region [role='button'] {
+  -webkit-app-region: no-drag;
+}
+
+/* Timer ring transition */
+.ring-progress {
+  transition: stroke-dashoffset 0.4s linear;
+}
+
+/* Settings panel animation */
+.settings-overlay {
+  animation: fadeIn 0.2s ease;
+}
+.settings-panel {
+  animation: scaleIn 0.2s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Custom range slider */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+.dark input[type='range'] {
+  background: rgba(255, 255, 255, 0.15);
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FF6B6B;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Pulse animation for active tomato */
+@keyframes tomatoPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+.tomato-pulse {
+  animation: tomatoPulse 2s ease-in-out infinite;
+}
+
+/* macOS-style scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
